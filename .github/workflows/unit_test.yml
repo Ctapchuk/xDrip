@@ -26,8 +26,7 @@ jobs:
       
       # Only upload artifacts built on Linux
     - name: Upload build artifact
-      if: runner.os == 'Linux'
       uses: actions/upload-artifact@v2
       with:
         name: ${{ github.sha }}
-        path: out
+        path: /home/runner/work/xDrip/xDrip/app/build/outputs/apk/prod/release/
