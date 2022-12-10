@@ -23,3 +23,11 @@ jobs:
         arguments: assembleProdRelease testProdReleaseUnitTest
     - name: Check Output
       run: bash ./etc/CheckBuild/check-release.sh test
+      
+      # Only upload artifacts built on Linux
+    - name: Upload build artifact
+      if: runner.os == 'Linux'
+      uses: actions/upload-artifact@v2
+      with:
+        name: ${{ github.sha }}
+        path: out
